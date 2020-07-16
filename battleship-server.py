@@ -243,7 +243,7 @@ if __name__ == "__main__":
     tornado.options.parse_command_line()
     signal.signal(signal.SIGINT, application.signal_handler)
     http_server = tornado.httpserver.HTTPServer(application)
-    port = os.environ.get('PORT')
+    port = int(os.getenv('PORT',8888))
     http_server.listen(port)
     myIP = socket.gethostbyname(socket.gethostname())
     print('*** Websocket Server Started at %s***' % myIP)

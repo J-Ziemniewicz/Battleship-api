@@ -7,6 +7,7 @@ import socket
 import signal
 import logging
 import ast
+import os
 from random import randint
 import numpy as np
 
@@ -242,7 +243,8 @@ if __name__ == "__main__":
     tornado.options.parse_command_line()
     signal.signal(signal.SIGINT, application.signal_handler)
     http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(8888)
+    port = os.environ.get('PORT')
+    http_server.listen(port)
     myIP = socket.gethostbyname(socket.gethostname())
     print('*** Websocket Server Started at %s***' % myIP)
     tornado.ioloop.PeriodicCallback(application.try_exit, 100).start()

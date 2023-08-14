@@ -1,2 +1,2 @@
 numpy==1.19.1
-tornado==6.0.4
+tornado==6.3.3
